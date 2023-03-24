@@ -4,8 +4,6 @@ const hourHand = document.querySelector('.hand.hour')
 const minuteHand = document.querySelector('.hand.minute')
 const secondsHand = document.querySelector('.hand.second')
 const clock = document.querySelector('.clock')
-const synth = new Tone.Synth().toDestination();
-
 
 function setClock(){
     const currentDate = new Date();
@@ -16,16 +14,27 @@ function setClock(){
     setRotation(secondsHand, secondsRatio);
     setRotation(minuteHand, minutesRatio);
     setRotation(hourHand, hoursRatio);
-    synth.triggerAttackRelease('D10', '10n')
 }
 
 function setRotation(element, rotationRatio){
     element.style.setProperty('--rotation',rotationRatio * 360)
 }
 
-setClock();
 
+let acc = 0;
 clock.addEventListener('click', function(){
-    const currentDate = new Date();
-    alert(`${currentDate}`)
+    const synth = new Tone.Synth().toDestination();
+
+    const paragraph = document.querySelector('p');
+
+    paragraph.innerHTML = `${new Date()}`
+    
+    if(acc < 1){
+    acc++
+    setInterval(tickTock,1000);
+    function tickTock(){
+        synth.triggerAttackRelease('d10', '10n')
+    }}
 });
+
+setClock();
