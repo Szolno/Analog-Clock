@@ -93,5 +93,6 @@ body {
 p{
     margin-top: 50px;
     font-size: large;
-    color: white
+    color: white;
+    text-align: center;
 }
