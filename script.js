@@ -23,18 +23,8 @@ function setRotation(element, rotationRatio){
 
 let acc = 0;
 clock.addEventListener('click', function(){
-    const synth = new Tone.Synth().toDestination();
-
     const paragraph = document.querySelector('p');
-
     paragraph.innerHTML = `${new Date()}`
-    
-    if(acc < 1){
-    acc++
-    setInterval(tickTock,1000);
-    function tickTock(){
-        synth.triggerAttackRelease('d10', '10n')
-    }}
 });
 
 setClock();
